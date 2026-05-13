@@ -13,7 +13,7 @@ const experiences = [
     role: "Software Engineering Intern",
     company: "Caterpillar",
     period: "Summer 2025 - Current",
-    details: "Data & AI Helios Team",
+    details: "Data & AI Coming Soon",
   },
   {
     role: "Data Engineering Intern",
@@ -59,7 +59,7 @@ function App() {
           entry.target.classList.toggle("reveal-visible", entry.isIntersecting);
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -91,9 +91,7 @@ function App() {
               >
                 Resume
               </a>
-              <span className="resume-tooltip">
-                new tab
-              </span>
+              <span className="resume-tooltip">new tab</span>
             </li>
             <li>
               <button
@@ -140,7 +138,11 @@ function App() {
       </header>
 
       <main className="main-content">
-        <section id="about" data-reveal className="reveal-section about-section">
+        <section
+          id="about"
+          data-reveal
+          className="reveal-section about-section"
+        >
           <div className="space-y-4">
             <p className="section-kicker">About Me</p>
             <h1 className="section-title">Welcome to my page!</h1>
@@ -209,7 +211,11 @@ function App() {
           </div>
         </section>
 
-        <section id="projects" data-reveal className="reveal-section projects-section">
+        <section
+          id="projects"
+          data-reveal
+          className="reveal-section projects-section"
+        >
           <p className="section-kicker">Projects</p>
           <div className="project-grid">
             {projects.map((project) => (
@@ -239,15 +245,11 @@ function App() {
         >
           <p className="section-kicker">Fun Facts</p>
           <ul className="fun-facts-list">
-            <li className="content-card">
-              I have a 10-year cat named Samwise
-            </li>
+            <li className="content-card">I have a 10-year cat named Samwise</li>
             <li className="content-card">
               I'm a major foodie. Follow me on my beli @noahtotheli
             </li>
-            <li className="content-card">
-              Chipotle Corn Salsa is my go-to
-            </li>
+            <li className="content-card">Chipotle Corn Salsa is my go-to</li>
             <li className="content-card">
               Am a washed formerly 6 UTR tennis player
             </li>
