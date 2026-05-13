@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
 
 :root {
   color: #292524;
@@ -21,4 +21,24 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+.reveal-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal-section.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-section,
+  .reveal-section.reveal-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }

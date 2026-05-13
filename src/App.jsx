@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import "./App.css";
 
 const navLinks = [
   { id: "about", label: "About Me" },
@@ -50,25 +51,33 @@ const projects = [
 function App() {
   const [isDark, setIsDark] = useState(false);
 
+  useEffect(() => {
+    const sections = document.querySelectorAll("[data-reveal]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          entry.target.classList.toggle("reveal-visible", entry.isIntersecting);
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div
-      className={`min-h-screen transition-colors duration-300 ${isDark ? "dark bg-stone-900 text-stone-100" : "bg-stone-100 text-stone-800"}`}
-    >
-      <header className="sticky top-0 z-50 border-b border-stone-200 bg-stone-100/95 backdrop-blur dark:border-stone-700 dark:bg-stone-900/95">
-        <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a
-            href="#about"
-            className="text-lg font-semibold tracking-tight text-stone-900 dark:text-stone-100"
-          >
+    <div className={`app-shell ${isDark ? "theme-dark" : ""}`}>
+      <header className="site-header">
+        <nav className="site-nav">
+          <a href="#about" className="brand-link">
             Noah Li
           </a>
-          <ul className="flex flex-wrap items-center gap-2 text-sm sm:gap-4">
+          <ul className="nav-list">
             {navLinks.map((link) => (
               <li key={link.id}>
-                <a
-                  href={`#${link.id}`}
-                  className="rounded-full px-3 py-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
-                >
+                <a href={`#${link.id}`} className="nav-link">
                   {link.label}
                 </a>
               </li>
@@ -76,21 +85,21 @@ function App() {
             <li className="group relative">
               <a
                 href="/Resume-Spring27-NL.pdf"
-                className="rounded-full px-3 py-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
+                className="nav-link"
                 target="_blank"
                 rel="noreferrer"
               >
                 Resume
               </a>
-              <span className="pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-max -translate-x-1/2 whitespace-nowrap rounded-md bg-stone-800 px-2 py-1 text-xs text-stone-100 opacity-0 shadow transition group-hover:opacity-100 dark:bg-stone-700">
-                takes you to a new tab
+              <span className="resume-tooltip">
+                new tab
               </span>
             </li>
             <li>
               <button
                 type="button"
                 onClick={() => setIsDark((prev) => !prev)}
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
+                className="theme-toggle"
                 aria-label={
                   isDark ? "Switch to light mode" : "Switch to dark mode"
                 }
@@ -130,33 +139,26 @@ function App() {
         </nav>
       </header>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:py-14">
-        <section
-          id="about"
-          className="grid scroll-mt-24 gap-6 rounded-2xl border border-stone-200 bg-amber-50 p-6 shadow-sm sm:grid-cols-[1.1fr_0.9fr] dark:border-stone-700 dark:bg-stone-800"
-        >
+      <main className="main-content">
+        <section id="about" data-reveal className="reveal-section about-section">
           <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-              About Me
-            </p>
-            <h1 className="text-3xl font-semibold text-stone-900 sm:text-4xl dark:text-stone-100">
-              Welcome to my page!
-            </h1>
-            <p className="max-w-2xl leading-relaxed text-stone-700 dark:text-stone-300">
+            <p className="section-kicker">About Me</p>
+            <h1 className="section-title">Welcome to my page!</h1>
+            <p className="body-text">
               I am a rising senior at UW Madison double majoring in Computer
               Science and Data Science. I am interested in Reinforcement
               Learning and Agentic AI.
             </p>
-            <p className="max-w-2xl leading-relaxed text-stone-700 dark:text-stone-300">
+            <p className="body-text">
               Outside of academics, I LOVE the outdoors and exploring new
               places. I'm a big fan of hiking, traveling, and eating. Tennis and
               Basketball are my favorite sports to play. Soccer is the favorite
               sport to watch (FC Barcelona & Lamine Yamal fanboy)
             </p>
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="action-row">
               <a
                 href="https://github.com/NoahLi06"
-                className="rounded-full bg-stone-800 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700"
+                className="btn-primary"
                 target="_blank"
                 rel="noreferrer"
               >
@@ -164,22 +166,19 @@ function App() {
               </a>
               <a
                 href="https://www.linkedin.com/in/noahsli/"
-                className="rounded-full bg-stone-700 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-600"
+                className="btn-secondary"
                 target="_blank"
                 rel="noreferrer"
               >
                 LinkedIn
               </a>
-              <a
-                href="#projects"
-                className="rounded-full border border-stone-300 px-4 py-2 text-sm font-medium text-stone-700 transition hover:bg-stone-200 dark:border-stone-600 dark:text-stone-200 dark:hover:bg-stone-700"
-              >
+              <a href="#projects" className="btn-outline">
                 See Projects
               </a>
             </div>
           </div>
 
-          <div className="mx-auto aspect-square w-60 overflow-hidden rounded-full border border-stone-200 bg-stone-200 sm:w-72 dark:border-stone-600 dark:bg-stone-700">
+          <div className="profile-frame">
             <img
               src="/NLphoto-SF.jpg"
               alt="Portrait of Noah Li"
@@ -190,64 +189,40 @@ function App() {
 
         <section
           id="experience"
-          className="scroll-mt-24 rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800"
+          data-reveal
+          className="reveal-section experience-section"
         >
-          <p className="text-sm uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-            Experience
-          </p>
-          <div className="mt-5 grid gap-4">
+          <p className="section-kicker">Experience</p>
+          <div className="experience-grid">
             {experiences.map((item) => (
-              <article
-                key={item.role}
-                className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900"
-              >
+              <article key={item.role} className="content-card">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100">
-                    {item.role}
-                  </h3>
-                  <span className="text-sm text-stone-500 dark:text-stone-400">
-                    {item.period}
-                  </span>
+                  <h3 className="card-heading">{item.role}</h3>
+                  <span className="card-meta">{item.period}</span>
                 </div>
                 <p className="text-sm font-medium text-amber-800">
                   {item.company}
                 </p>
-                <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-                  {item.details}
-                </p>
+                <p className="card-text">{item.details}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section
-          id="projects"
-          className="scroll-mt-24 rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800"
-        >
-          <p className="text-sm uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-            Projects
-          </p>
-          <div className="mt-5 grid gap-4 md:grid-cols-3">
+        <section id="projects" data-reveal className="reveal-section projects-section">
+          <p className="section-kicker">Projects</p>
+          <div className="project-grid">
             {projects.map((project) => (
-              <article
-                key={project.title}
-                className="rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900"
-              >
-                <h3 className="text-lg font-semibold text-stone-900 dark:text-stone-100">
-                  {project.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300">
-                  {project.description}
-                </p>
-                <p className="mt-3 text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400">
-                  {project.stack}
-                </p>
+              <article key={project.title} className="content-card">
+                <h3 className="card-heading">{project.title}</h3>
+                <p className="card-text">{project.description}</p>
+                <p className="stack-text">{project.stack}</p>
                 {project.link && (
                   <a
                     href={project.link}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-3 inline-block rounded-full bg-stone-800 px-3 py-1.5 text-xs font-medium text-stone-50 transition hover:bg-stone-700"
+                    className="project-link"
                   >
                     Open Project
                   </a>
@@ -259,40 +234,37 @@ function App() {
 
         <section
           id="fun-facts"
-          className="scroll-mt-24 rounded-2xl border border-stone-200 bg-orange-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800"
+          data-reveal
+          className="reveal-section fun-facts-section"
         >
-          <p className="text-sm uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400">
-            Fun Facts
-          </p>
-          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
-            <li className="rounded-xl border border-amber-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
+          <p className="section-kicker">Fun Facts</p>
+          <ul className="fun-facts-list">
+            <li className="content-card">
               I have a 10-year cat named Samwise
             </li>
-            <li className="rounded-xl border border-amber-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
+            <li className="content-card">
               I'm a major foodie. Follow me on my beli @noahtotheli
             </li>
-            <li className="rounded-xl border border-amber-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
+            <li className="content-card">
               Chipotle Corn Salsa is my go-to
             </li>
-            <li className="rounded-xl border border-amber-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900">
+            <li className="content-card">
               Am a washed formerly 6 UTR tennis player
             </li>
           </ul>
         </section>
       </main>
 
-      <footer className="border-t border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-900">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
-          <p className="text-sm text-stone-500 dark:text-stone-400">
-            Connect with me
-          </p>
-          <div className="flex items-center gap-3">
+      <footer className="footer-shell">
+        <div className="footer-content">
+          <p className="footer-text">Connect with me</p>
+          <div className="social-row">
             <a
               href="https://github.com/NoahLi06"
               target="_blank"
               rel="noreferrer"
               aria-label="GitHub"
-              className="rounded-full border border-stone-300 bg-white p-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
+              className="social-icon"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -307,7 +279,7 @@ function App() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="rounded-full border border-stone-300 bg-white p-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
+              className="social-icon"
             >
               <svg
                 viewBox="0 0 24 24"
@@ -320,7 +292,7 @@ function App() {
             <a
               href="mailto:noah.jialiang@gmail.com"
               aria-label="Email"
-              className="rounded-full border border-stone-300 bg-white p-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100"
+              className="social-icon"
             >
               <svg
                 viewBox="0 0 24 24"

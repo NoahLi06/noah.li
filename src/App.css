@@ -1,0 +1,146 @@
+@reference "tailwindcss";
+@custom-variant dark (&:where(.theme-dark, .theme-dark *));
+
+.app-shell {
+  @apply min-h-screen bg-stone-100 text-stone-800 transition-colors duration-300;
+}
+
+.app-shell.theme-dark {
+  @apply bg-stone-900 text-stone-100;
+}
+
+.site-header {
+  @apply sticky top-0 z-50 border-b border-stone-200 bg-stone-100/95 backdrop-blur dark:border-stone-700 dark:bg-stone-900/95;
+}
+
+.site-nav {
+  @apply mx-auto flex max-w-6xl items-center justify-between px-6 py-4;
+}
+
+.brand-link {
+  @apply text-lg font-semibold tracking-tight text-stone-900 dark:text-stone-100;
+}
+
+.nav-list {
+  @apply flex flex-wrap items-center gap-2 text-sm sm:gap-4;
+}
+
+.nav-link {
+  @apply rounded-full px-3 py-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100;
+}
+
+.resume-tooltip {
+  @apply pointer-events-none absolute left-1/2 top-full z-20 mt-2 w-max -translate-x-1/2 whitespace-nowrap rounded-md bg-stone-800 px-2 py-1 text-xs text-stone-100 opacity-0 shadow transition group-hover:opacity-100 dark:bg-stone-700;
+}
+
+.theme-toggle {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-full border border-stone-300 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100;
+}
+
+.main-content {
+  @apply mx-auto flex max-w-6xl flex-col gap-8 px-6 py-10 sm:py-14;
+}
+
+.about-section {
+  @apply grid scroll-mt-24 gap-6 rounded-2xl border border-stone-200 bg-amber-50 p-6 shadow-sm sm:grid-cols-[1.1fr_0.9fr] dark:border-stone-700 dark:bg-stone-800;
+}
+
+.experience-section {
+  @apply scroll-mt-24 rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800;
+}
+
+.projects-section {
+  @apply scroll-mt-24 rounded-2xl border border-stone-200 bg-stone-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800;
+}
+
+.fun-facts-section {
+  @apply scroll-mt-24 rounded-2xl border border-stone-200 bg-orange-50 p-6 shadow-sm dark:border-stone-700 dark:bg-stone-800;
+}
+
+.section-kicker {
+  @apply text-sm uppercase tracking-[0.18em] text-stone-500 dark:text-stone-400;
+}
+
+.section-title {
+  @apply text-3xl font-semibold text-stone-900 dark:text-stone-100 sm:text-4xl;
+}
+
+.body-text {
+  @apply max-w-2xl leading-relaxed text-stone-700 dark:text-stone-300;
+}
+
+.action-row {
+  @apply flex flex-wrap items-center gap-3;
+}
+
+.btn-primary {
+  @apply rounded-full bg-stone-800 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700;
+}
+
+.btn-secondary {
+  @apply rounded-full bg-stone-700 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-600;
+}
+
+.btn-outline {
+  @apply rounded-full border border-stone-300 px-4 py-2 text-sm font-medium text-stone-700 transition hover:bg-stone-200 dark:border-stone-600 dark:text-stone-200 dark:hover:bg-stone-700;
+}
+
+.profile-frame {
+  @apply mx-auto aspect-square w-60 overflow-hidden rounded-full border border-stone-200 bg-stone-200 sm:w-72 dark:border-stone-600 dark:bg-stone-700;
+}
+
+.experience-grid {
+  @apply mt-5 grid gap-4;
+}
+
+.project-grid {
+  @apply mt-5 grid gap-4 md:grid-cols-3;
+}
+
+.fun-facts-list {
+  @apply mt-5 grid gap-3;
+}
+
+.content-card {
+  @apply rounded-xl border border-stone-200 bg-white p-4 dark:border-stone-700 dark:bg-stone-900;
+}
+
+.card-heading {
+  @apply text-lg font-semibold text-stone-900 dark:text-stone-100;
+}
+
+.card-meta {
+  @apply text-sm text-stone-500 dark:text-stone-400;
+}
+
+.card-text {
+  @apply mt-2 text-sm leading-relaxed text-stone-700 dark:text-stone-300;
+}
+
+.stack-text {
+  @apply mt-3 text-xs uppercase tracking-wider text-stone-500 dark:text-stone-400;
+}
+
+.project-link {
+  @apply mt-3 inline-block rounded-full bg-stone-800 px-3 py-1.5 text-xs font-medium text-stone-50 transition hover:bg-stone-700;
+}
+
+.footer-shell {
+  @apply border-t border-stone-200 bg-stone-50 dark:border-stone-700 dark:bg-stone-900;
+}
+
+.footer-content {
+  @apply mx-auto flex max-w-6xl items-center justify-between px-6 py-6;
+}
+
+.footer-text {
+  @apply text-sm text-stone-500 dark:text-stone-400;
+}
+
+.social-row {
+  @apply flex items-center gap-3;
+}
+
+.social-icon {
+  @apply rounded-full border border-stone-300 bg-white p-2 text-stone-700 transition hover:bg-amber-100 hover:text-stone-900 dark:border-stone-600 dark:bg-stone-800 dark:text-stone-200 dark:hover:bg-stone-700 dark:hover:text-stone-100;
+}
