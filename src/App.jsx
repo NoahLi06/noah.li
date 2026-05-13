@@ -16,6 +16,12 @@ const experiences = [
     details: "Data & AI",
   },
   {
+    role: "Software Developer Lead",
+    company: "Data Science for Sustainable Development @ UW Madison",
+    period: "Fall 2024 - Current",
+    details: "Efficiency Navigator Map Project Manager for Sustain Dane",
+  },
+  {
     role: "Data Engineering Intern",
     company: "Komatsu",
     period: "Summer 2024",
@@ -144,7 +150,7 @@ function App() {
         >
           <div className="space-y-4">
             <p className="section-kicker">Hey, I'm Noah!</p>
-            <h1 className="section-title">Welcome to my page!</h1>
+            <h1 className="section-title">Welcome to my webpage!</h1>
             <p className="body-text">
               I am a rising senior at UW Madison double majoring in Computer
               Science and Data Science. I am interested in Reinforcement
@@ -154,7 +160,7 @@ function App() {
               Outside of academics, I LOVE the outdoors and exploring new
               places. I'm a big fan of hiking, traveling, and eating. Tennis and
               Basketball are my favorite sports to play. Soccer is the favorite
-              sport to watch (FC Barcelona & Lamine Yamal fanboy)
+              sport to watch (FC Barcelona & Pedri fanboy)
             </p>
             <div className="action-row">
               <a

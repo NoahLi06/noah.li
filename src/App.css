@@ -74,11 +74,11 @@
 }
 
 .btn-primary {
-  @apply rounded-full bg-stone-800 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700;
+  @apply rounded-full border border-transparent bg-stone-800 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700 dark:border-white/80;
 }
 
 .btn-secondary {
-  @apply rounded-full bg-stone-700 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-600;
+  @apply rounded-full border border-transparent bg-stone-800 px-4 py-2 text-sm font-medium text-stone-50 transition hover:bg-stone-700 dark:border-white/80;
 }
 
 .btn-outline {
