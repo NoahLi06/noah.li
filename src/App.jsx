@@ -13,14 +13,13 @@ const experiences = [
     role: "Software Engineering Intern",
     company: "Caterpillar",
     period: "Summer 2025 - Current",
-    details: "Data & AI Coming Soon",
+    details: "Data & AI",
   },
   {
     role: "Data Engineering Intern",
     company: "Komatsu",
     period: "Summer 2024",
-    details:
-      "Standardized over 15,000 material specifications using Excel-based automation to streamline operations across all engineering teams while implementing comprehensive data validation and quality checks to ensure accuracy and accessibility.",
+    details: "Data Infrastructure",
   },
 ];
 
@@ -88,10 +87,10 @@ function App() {
                 className="nav-link"
                 target="_blank"
                 rel="noreferrer"
+                title="Noah Li's Resume"
               >
                 Resume
               </a>
-              <span className="resume-tooltip">new tab</span>
             </li>
             <li>
               <button
@@ -144,7 +143,7 @@ function App() {
           className="reveal-section about-section"
         >
           <div className="space-y-4">
-            <p className="section-kicker">About Me</p>
+            <p className="section-kicker">Hey, I'm Noah!</p>
             <h1 className="section-title">Welcome to my page!</h1>
             <p className="body-text">
               I am a rising senior at UW Madison double majoring in Computer
