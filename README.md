@@ -1,4 +1,4 @@
-# Noah Li Personal Website
+# Noah Li's Personal Website
 
 Personal portfolio website built with React, Vite, and Tailwind CSS.
 
@@ -61,13 +61,3 @@ npm run preview
   - `Fun Facts`
 - Update styles in `src/App.css`.
 - Light/Dark mode is controlled by the navbar theme toggle.
-
-## Important Assets
-
-If an image or file does not appear in production, make sure the file exists in `public/` and that paths match exactly (case-sensitive on many hosts).
-
-Examples used by this site:
-
-- `/NLphoto-SF.jpg`
-- `/Resume-Spring27-NL.pdf`
-- `/favicon.svg`
