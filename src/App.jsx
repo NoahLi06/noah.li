@@ -182,8 +182,8 @@ function App() {
 
           <div className="profile-frame">
             <img
-              src="/NLphoto-SF.jpg"
-              alt="Portrait of Noah Li"
+              src="/nl-heat.jpg"
+              alt="Portrait of Me"
               className="h-full w-full object-cover"
             />
           </div>
