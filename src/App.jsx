@@ -31,6 +31,12 @@ const experiences = [
 
 const projects = [
   {
+    title: "ReLLM",
+    description:
+      "Built a full RLHF training workflow for a 1-3B language model: supervised tuning, a reward model from human preference comparisons, and PPO alignment with KL controls. Also compared PPO with DPO and tuned the beta setting to balance safer behavior with model performance.",
+    stack: "Python",
+  },
+  {
     title: "Efficiency Navigator Map",
     description:
       "Done alongside Sustain Dane, a non-profit organization dedicated to sustainability and combatting climate change in Madison, WI. The Efficiency Navigator Map is a tool that helps users see if their building can benefit from their program, making housing more efficient and resilient.",
@@ -43,13 +49,6 @@ const projects = [
       "Want to make even more money from cashback and points? Try Pokoupon! Using a game-like interface, users load in credit cards they use and the app calculates which card can give them the most money back.",
     stack: "JavaScript, Tailwind CSS, HTML",
     link: "https://noahli06.github.io/Pokoupon/",
-  },
-  {
-    title: "MadGym",
-    description:
-      "Are you a UW Madison student looking to get a workout in without the hassle of waiting in line? MadGym is for you!",
-    stack: "React, Tailwind CSS, HTML",
-    link: "https://noahli06.github.io/MadGym/",
   },
 ];
 
@@ -89,7 +88,7 @@ function App() {
             ))}
             <li className="group relative">
               <a
-                href="/Resume-Spring27-NL.pdf"
+                href="/NLi-Resume-Spring27.pdf"
                 className="nav-link"
                 target="_blank"
                 rel="noreferrer"
