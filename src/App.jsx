@@ -33,8 +33,9 @@ const projects = [
   {
     title: "ReLLM",
     description:
-      "Built a full RLHF training workflow for a 1-3B language model: supervised tuning, a reward model from human preference comparisons, and PPO alignment with KL controls. Also compared PPO with DPO and tuned the beta setting to balance safer behavior with model performance.",
+      "Building a full RLHF training workflow for a 1-3B large language model: supervised tuning, a reward model from human preference comparisons, and PPO alignment with KL controls. Also compared PPO with DPO and tuned the beta setting to balance safer behavior with model performance.",
     stack: "Python",
+    comingSoon: true,
   },
   {
     title: "Efficiency Navigator Map",
@@ -86,17 +87,6 @@ function App() {
                 </a>
               </li>
             ))}
-            <li className="group relative">
-              <a
-                href="/NLi-Resume-Spring27.pdf"
-                className="nav-link"
-                target="_blank"
-                rel="noreferrer"
-                title="Noah Li's Resume"
-              >
-                Resume
-              </a>
-            </li>
             <li>
               <button
                 type="button"
@@ -237,6 +227,9 @@ function App() {
                     Open Project
                   </a>
                 )}
+                {project.comingSoon && (
+                  <span className="project-link-disabled">Coming Soon</span>
+                )}
               </article>
             ))}
           </div>
@@ -263,7 +256,6 @@ function App() {
 
       <footer className="footer-shell">
         <div className="footer-content">
-          <p className="footer-text">Connect with me</p>
           <div className="social-row">
             <a
               href="https://github.com/NoahLi06"
